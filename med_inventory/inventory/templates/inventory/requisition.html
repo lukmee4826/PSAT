@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>เบิก-จ่ายเวชภัณฑ์</h2>
+<table border="1">
+    <thead>
+        <tr>
+            <th>คำขอเบิก</th>
+            <th>ผู้ขอ</th>
+            <th>วันที่ขอ</th>
+            <th>สถานะ</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for requisition in requisitions %}
+        <tr>
+            <td>{{ requisition.name }}</td>
+            <td>{{ requisition.user }}</td>
+            <td>{{ requisition.date_created }}</td>
+            <td>{{ requisition.status }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

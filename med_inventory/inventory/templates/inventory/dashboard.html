@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}แดชบอร์ด - ระบบจัดการเวชภัณฑ์{% endblock %}
+
+{% block content %}
+<h2>สรุปข้อมูลเวชภัณฑ์</h2>
+
+<div class="dashboard-stats">
+    <!-- Statistics Cards -->
+    <div class="card">
+        <h3>สถิติคลังยา</h3>
+        <p>จำนวนเวชภัณฑ์ที่มีในระบบ</p>
+        <p>{{ total_medicines }}</p>
+    </div>
+
+    <div class="card">
+        <h3>เวชภัณฑ์ที่ใกล้หมดอายุ</h3>
+        <p>เวชภัณฑ์ที่กำลังจะหมดอายุ</p>
+        <p>{{ expiring_medicines }}</p>
+    </div>
+
+    <div class="card">
+        <h3>แนวโน้มการใช้เวชภัณฑ์</h3>
+        <p>กราฟแสดงการใช้เวชภัณฑ์ย้อนหลัง</p>
+        <!-- You can integrate a chart here -->
+        <div id="chart"></div>
+    </div>
+
+    <div class="card">
+        <h3>คำสั่งเบิก-จ่ายล่าสุด</h3>
+        <p>รายการเบิกจ่ายล่าสุด</p>
+        <p>{{ recent_requisitions }}</p>
+    </div>
+</div>
+
+<!-- Notifications for Low Stock -->
+<h3>แจ้งเตือนเวชภัณฑ์ขาดแคลน</h3>
+<ul>
+    {% for item in low_stock_items %}
+        <li>{{ item.name }} - {{ item.quantity }} คงเหลือ</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

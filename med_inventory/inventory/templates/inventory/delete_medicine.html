@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>ลบเวชภัณฑ์</h2>
+<p>คุณแน่ใจหรือไม่ว่าต้องการลบ "{{ medicine.name }}"?</p>
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit">✅ ใช่, ลบเลย</button>
+</form>
+<a href="{% url 'inventory_list' %}">❌ ยกเลิก</a>
+{% endblock %}
